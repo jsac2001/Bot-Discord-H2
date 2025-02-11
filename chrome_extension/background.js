@@ -10,12 +10,13 @@ chrome.runtime.onInstalled.addListener(() => {
 // Handle context menu clicks
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "sendImage") {
-    // Open popup for image selection
-    chrome.windows.create({
-      url: 'popup.html',
-      type: 'popup',
-      width: 320,
-      height: 400
+    chrome.storage.local.set({ 'selectedImageUrl': info.srcUrl }, () => {
+      chrome.windows.create({
+        url: 'popup.html',
+        type: 'popup',
+        width: 320,
+        height: 400
+      });
     });
   }
 });

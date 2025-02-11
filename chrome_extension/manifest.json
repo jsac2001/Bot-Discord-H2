@@ -5,7 +5,8 @@
   "description": "Send images and URLs to Discord bot API",
   "permissions": [
     "contextMenus",
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "host_permissions": [
     "http://localhost:3000/*"
