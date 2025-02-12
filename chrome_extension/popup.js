@@ -18,11 +18,17 @@ async function loadForumPosts() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', loadForumPosts);
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadForumPosts();
+  
+  // Check if we have a selected image URL
+  const { selectedImageUrl } = await chrome.storage.local.get('selectedImageUrl');
+  if (selectedImageUrl) {
+    document.getElementById('sendUrl').textContent = 'Send Image';
+  }
+});
 
 document.getElementById('sendUrl').addEventListener('click', async () => {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  const url = tab.url;
   const threadId = document.getElementById('forumPosts').value;
   const message = document.getElementById('message').value;
   
@@ -32,21 +38,31 @@ document.getElementById('sendUrl').addEventListener('click', async () => {
   }
   
   try {
+    const { selectedImageUrl } = await chrome.storage.local.get('selectedImageUrl');
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    
+    const payload = {
+      threadId,
+      type: selectedImageUrl ? 'image' : 'url',
+      data: selectedImageUrl || tab.url,
+      message
+    };
+
     const response = await fetch('http://localhost:3000/api/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        threadId,
-        type: 'url',
-        data: url,
-        message
-      })
+      body: JSON.stringify(payload)
     });
     
     if (!response.ok) {
       throw new Error('Network response was not ok');
+    }
+    
+    // Clear the stored image URL
+    if (selectedImageUrl) {
+      await chrome.storage.local.remove('selectedImageUrl');
     }
     
     const result = await response.json();
@@ -54,6 +70,6 @@ document.getElementById('sendUrl').addEventListener('click', async () => {
     window.close();
   } catch (error) {
     console.error('Error:', error);
-    alert('Failed to send URL');
+    alert('Failed to send');
   }
 }); 
