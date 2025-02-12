@@ -1,0 +1,20 @@
+{
+  "feeds": [
+    {
+      "name": "Dev.to",
+      "url": "https://dev.to/feed"
+    },
+    {
+      "name": "HackerNews",
+      "url": "https://hnrss.org/newest"
+    },
+    {
+      "name": "FreeCodeCamp",
+      "url": "https://www.freecodecamp.org/news/rss/"
+    },
+    {
+      "name": "CSS-Tricks",
+      "url": "https://css-tricks.com/feed/"
+    }
+  ]
+} 
