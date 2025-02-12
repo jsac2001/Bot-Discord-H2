@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Discord Bot Image Sender</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+    }
+    select, textarea, button {
+      width: 100%;
+      margin: 5px 0;
+      padding: 8px;
+    }
+    textarea {
+      height: 60px;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+  <h2>Discord Bot Image Sender</h2>
+  <select id="forumPosts">
+    <option value="">Loading forum posts...</option>
+  </select>
+  <textarea id="message" placeholder="Optional message..."></textarea>
+  <button id="sendUrl">Send Current URL</button>
+  <script src="popup.js"></script>
+</body>
+</html> 
