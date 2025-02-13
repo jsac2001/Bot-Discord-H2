@@ -1,4 +1,3 @@
-// Import required packages & token
 const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
@@ -26,7 +25,6 @@ app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
 });
 
-// Create a new client to run the bot
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -35,12 +33,10 @@ const client = new Client({
   ],
 });
 
-// Create a command collection
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
 
-// Get the individual commands from their respective subfolder inside "commands"
 for (const folder of commandFolders) {
   const commandsPath = path.join(foldersPath, folder);
   const commandFiles = fs
@@ -59,7 +55,6 @@ for (const folder of commandFolders) {
   }
 }
 
-// Get the events from the "event" folder
 const eventsPath = path.join(__dirname, "events");
 const eventFiles = fs
   .readdirSync(eventsPath)
@@ -77,12 +72,10 @@ for (const file of eventFiles) {
 
 client.login(token);
 
-//Shows a "hello world" message
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// Fetch forum posts from bot-veille channel
 app.get("/api/forum-posts", async (req, res) => {
   try {
     const channel = client.channels.cache.find(
@@ -106,7 +99,6 @@ app.get("/api/forum-posts", async (req, res) => {
   }
 });
 
-// Handle submissions to forum posts
 app.post("/api/submit", async (req, res) => {
   try {
     const { threadId, type, data, message } = req.body;
@@ -134,7 +126,6 @@ app.post("/api/submit", async (req, res) => {
   }
 });
 
-//Error handling for undefined routes
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   console.error(err.message, err.stack);
