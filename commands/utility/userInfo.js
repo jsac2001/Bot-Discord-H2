@@ -2,11 +2,23 @@ const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("bender_user")
-    .setDescription("Provides information about the user."),
+    .setName("userinfo")
+    .setDescription("Get information about a user.")
+    .addUserOption(option => 
+      option.setName("user")
+        .setDescription("The user to get info about")
+        .setRequired(false)),
   async execute(interaction) {
-    await interaction.reply(
-      `This command was run by ${interaction.user.username}, who joined on ${interaction.member.joinedAt}.`
-    );
+    const user = interaction.options.getUser("user") || interaction.user;
+    const member = await interaction.guild.members.fetch(user.id);
+
+    const userInfo = `
+👤 **Infos sur l'utilisateur :**
+- **Nom d'utilisateur :** ${user.username}
+- **ID :** ${user.id}
+- **Rejoint le serveur :** ${new Date(member.joinedAt).toLocaleDateString()}
+- **Compte créé le :** ${new Date(user.createdAt).toLocaleDateString()}
+    `;
+    interaction.reply(userInfo);
   }
 };
