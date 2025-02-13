@@ -1,4 +1,4 @@
-# Bender Bot
+# Veille Bot Discord
 
 A discord bot to help with the gathering and organization of informations
 
