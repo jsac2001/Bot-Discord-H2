@@ -4,7 +4,7 @@ Discord Bot used as a template to learn NodeJs
 
 ## How to install
 
-- git clone https://github.com/SteakBarbare/Bender-Bot
+- git clone https://github.com/jsac2001/Bot-Discord-H2
 
 > When it is done, create a config file in the base directory with these fields inside:
 >
@@ -20,7 +20,8 @@ Discord Bot used as a template to learn NodeJs
 - node deployCommands.js to register your commands in the guild
 - node index.js to launch the Bot
 
-## How to add stuff
+## How to install The Chrome extension
 
-- Commands folder -> Create new commands inside subfolders, each must have a data & execute
-- Events folder -> You can add new events here, no need for subfolders
+- download the chrome_extension folder
+- enable developper mode in the chrome or chromium extension window
+- add the unpacked folder
