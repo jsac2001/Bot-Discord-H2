@@ -8,13 +8,15 @@ Discord Bot used as a template to learn NodeJs
 
 > When it is done, create a config file in the base directory with these fields inside:
 >
-> > ```
-> > {
-> >   "token": "Your Bot Token Here",
-> >   "clientId": "Your Bot Application ID Here",
-> >   "guildId": "The Guild Id, you can get it by right clicking the guild icon while being in developer mode"
-> > }
-> > ```
+>  ```
+>  {
+>    "token": "Your Bot Token Here",
+>    "clientId": "Your Bot Application ID Here",
+>    "guildId": "The Guild Id, you can get it by right clicking the guild icon while being in developer mode",
+>    "newsApiKey": "Get a key from https://newsapi.org/"
+>    "meteoApiKey": "Get a key from meteo-concept.com"
+>  }
+>  ```
 
 - npm i to install dependencies
 - node deployCommands.js to register your commands in the guild
