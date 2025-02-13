@@ -5,6 +5,7 @@ A discord bot to help with the gathering and organization of informations
 ## How to install
 
 - git clone https://github.com/jsac2001/Bot-Discord-H2
+  or download the latest release from [Here](https://github.com/jsac2001/Bot-Discord-H2/releases/tag/1.0)
 
 > When it is done, create a config file in the base directory with these fields inside:
 >
