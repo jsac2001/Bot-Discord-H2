@@ -1,6 +1,6 @@
 # Bender Bot
 
-Discord Bot used as a template to learn NodeJs
+A discord bot to help with the gathering and organization of informations
 
 ## How to install
 
