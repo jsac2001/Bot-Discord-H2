@@ -6,7 +6,6 @@ module.exports = {
     .setDescription("Copies the latest message from the latest forum post"),
   async execute(interaction) {
     try {
-      // Find the bot-veille forum channel
       const forumChannel = interaction.client.channels.cache.find(
         (channel) => channel.name === "bot-veille" && channel.type === 15
       );
@@ -18,7 +17,6 @@ module.exports = {
         });
       }
 
-      // Get all threads and sort by creation date
       const threads = await forumChannel.threads.fetch();
       const latestThread = [...threads.threads.values()]
         .sort((a, b) => b.createdTimestamp - a.createdTimestamp)[0];
@@ -30,7 +28,6 @@ module.exports = {
         });
       }
 
-      // Get the latest message from the thread
       const messages = await latestThread.messages.fetch({ limit: 1 });
       const latestMessage = messages.first();
 
@@ -41,7 +38,6 @@ module.exports = {
         });
       }
 
-      // Send the message content to the current channel
       await interaction.reply({
         content: `Latest message from "${latestThread.name}":\n\n${latestMessage.content}`
       });
