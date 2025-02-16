@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("test_copy_latest")
+    .setName("copy_latest")
     .setDescription("Copies the latest message from the latest forum post"),
   async execute(interaction) {
     try {

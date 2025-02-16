@@ -20,9 +20,9 @@ module.exports = {
                         + "`/skip` → Passe à la musique suivante.\n\n"
                         + "📢 **Autres**\n"
                         + "`/weather [ville]` → Donne la météo.\n"
-                        + "`/news` → Affiche les dernières actualités.\n"
-                        + "`/userinfo @user` → Affiche les infos d'un membre.\n\n"
-                        + "🔥 **Amuse-toi bien !**";
+                        + "`/bitcoin` → Affiche la valeur actuelle du bitcoin.\n"
+                        + "`/articles` → Affiche les derniers articles d'un site.\n"
+                        + "`/copy_latest` → Affiche le dernier message de #bot-veille.\n";
     await interaction.reply(helpMessage);
   }
 };
